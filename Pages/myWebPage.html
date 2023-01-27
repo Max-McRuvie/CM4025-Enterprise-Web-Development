@@ -3,7 +3,7 @@
 <head>
   <title>Price Calculator</title>
   <script src="script.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="../StyleSheets/style.css">
 </head>
 <body>
 
@@ -24,6 +24,20 @@
     </form>
   </div>
 </div>
+
+<script>
+  function calculatePrice() {
+    var s = document.getElementById("salary").value;
+    var d = document.getElementById("days").value;
+    console.log("Calculating price")
+    console.log(s)
+    console.log(d)
+    let finalPrice = 0;
+    dailyRate = s/365;
+    finalPrice = dailyRate * d;
+    document.getElementById("finalPrice").innerHTML = finalPrice;
+  }
+</script>
 
 </body>
 </html>
