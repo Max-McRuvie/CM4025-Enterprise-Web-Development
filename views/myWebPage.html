@@ -13,13 +13,16 @@
     </div>
 
     <div>
-      <form id="budget" onsubmit="getFinalPrice()">
+      <form id="budget">
         <label for="salary">What annual salary seems suitable for you?</label>
         <input type="text" id="salary" name="salary"/><br><br>
         <label for="days">How many days do you think it will take you to make the website?</label>
         <input type="text" id="days" name="days"/><br><br>
-        <input type="submit" value="Calculate your price!"><br><br>
-        <label id="finalPrice"> ??? </label>
+        <input type="submit" value="Calculate Price!" id="getPrice" onclick="getFinalPrice()"><br><br>
+        <label id="finalPrice"> ??? </label><br><br>
+        <label for="name">Name your quote</label>
+        <input type="text" id="name" name="name"/><br><br>
+        <input type="submit" value="Store Quote" id="getPrice" onclick="storeQuote()"><br><br>
       </form>
     </div>
   </div>
@@ -38,6 +41,17 @@
         console.log(data);
         document.getElementById("finalPrice").innerHTML = data
       });
+    }
+
+    const storeQuote = () => {
+      event.preventDefault()
+      let name = document.getElementById("name").value;
+      let salary = document.getElementById("salary").value;
+      let days = document.getElementById("days").value;
+      
+      let url = "/api/storeQuote?"+'name='+name+"&salary="+salary+"&days="+days;
+
+      fetch(url)
     }
   </script>
 </body>
